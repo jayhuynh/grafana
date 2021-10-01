@@ -6,6 +6,11 @@ COPY package.json yarn.lock ./
 COPY packages packages
 
 RUN apk --no-cache add git
+
+# If build on m1 apple
+ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true
+ENV PUPPETEER_EXECUTABLE_PATH `which chromium`
+
 RUN yarn install --pure-lockfile --no-progress
 
 COPY tsconfig.json .eslintrc .editorconfig .browserslistrc .prettierrc.js ./

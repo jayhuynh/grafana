@@ -6,8 +6,11 @@
   "version": "8.1.0",
   "repository": "github:grafana/grafana",
   "scripts": {
+    "docker:build": "make build-docker-full",
+    "run:be": "make build-docker-full",
+    "run:fe": "yarn start",
     "api-tests": "jest --notify --watch --config=devenv/e2e-api-tests/jest.js",
-    "build": "node ./node_modules/webpack/bin/webpack.js --config scripts/webpack/webpack.prod.js",
+    "build": "node --max-old-space-size=4096 ./node_modules/webpack/bin/webpack.js --config scripts/webpack/webpack.prod.js",
     "dev": "webpack --progress --colors --config scripts/webpack/webpack.dev.js",
     "e2e": "./e2e/start-and-run-suite",
     "e2e:debug": "./e2e/start-and-run-suite debug",

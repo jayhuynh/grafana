@@ -1,0 +1,9 @@
+version: "3"
+
+services:
+  thesis-grafana-service:
+    container_name: thesis-grafana-container
+    # image: grafana/grafana:latest
+    image: grafana/grafana:dev
+    ports:
+      - 3000:3000
